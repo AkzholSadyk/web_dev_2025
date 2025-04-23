@@ -1,0 +1,46 @@
+<!-- Профиль пользователя -->
+<div class="profile">
+    <div class="profile-header">
+      <img [src]="user.avatar ? 'http://localhost:8000' + user.avatar : defaultAvatar"
+        class="w-12 h-12 rounded-full object-cover"
+        alt="Avatar"/>
+
+      <h2>{{ user.username }}</h2>
+      <p>{{ user.first_name }} {{ user.last_name }}</p>
+      <p>{{ user.email }}</p> <!-- Пример дополнительной информации -->
+    </div>
+  
+    <!-- Лайкнутые треки пользователя -->
+    <div class="liked-tracks mt-6">
+      <h3 class="text-xl font-bold mb-4">🎵 Лайкнутые треки {{ user.username || '' }}</h3>
+  
+      <div *ngIf="likedTracks.length === 0" class="text-gray-500">
+        Пользователь ещё не лайкнул ни одного трека.
+      </div>
+  
+      <div class="track-list" *ngIf="likedTracks.length > 0">
+        <div *ngFor="let track of likedTracks" class="track-card">
+          <!-- Логика для изображения трека -->
+          <img [src]="'http://localhost:8000' + track.image" alt="Track Image" />
+
+  
+          <div class="track-info">
+            <h4 class="text-lg font-semibold">{{ track.title }}</h4>
+            <p *ngIf="track.artist">🎤 {{ track.artist }}</p>
+            <p *ngIf="track.album">💿 {{ track.album }}</p>
+            <p *ngIf="track.created_at">🕒 {{ track.created_at | date:'medium' }}</p>
+  
+            <!-- Логика для аудиофайла -->
+            <img [src]="'http://localhost:8000' + track.audio" type="audio/mpeg" />
+
+  
+            <div class="likes mt-2">
+              <button (click)="likeTrack(track.id)" class="text-red-500 hover:underline">❤️ Like</button>
+              <span>{{ track.like_count || 0 }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,23 @@
+<div class="home-wrapper">
+  <div class="title-block">
+    <p>Music Streaming Platform</p>
+    <h1>WELCOME TO MSP</h1>
+  </div>
+
+  <div class="auth-container">
+   
+
+    <fieldset>
+      <label>username</label>
+      <input type="text" [(ngModel)]="authModel.username" />
+    </fieldset>
+
+    <fieldset>
+      <label>password</label>
+      <input type="password" [(ngModel)]="authModel.password" />
+    </fieldset>
+
+    <button (click)="login()">Log in</button>
+    <button class="secondary" (click)="register()">Sign in</button>
+  </div>
+</div>

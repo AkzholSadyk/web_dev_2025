@@ -1,0 +1,29 @@
+<form [formGroup]="createTrackForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" formControlName="title" type="text">
+    </div>
+  
+    <div>
+      <label for="artist">Artist</label>
+      <input id="artist" formControlName="artist" type="text">
+    </div>
+  
+    <div>
+      <label for="album">Album</label>
+      <input id="album" formControlName="album" type="text">
+    </div>
+  
+    <div>
+      <label for="image">Image</label>
+      <input id="image" type="file" (change)="onFileChange($event, 'image')">
+    </div>
+  
+    <div>
+      <label for="audio">Audio</label>
+      <input id="audio" type="file" (change)="onFileChange($event, 'audio')">
+    </div>
+  
+    <button type="submit" [disabled]="createTrackForm.invalid">Create Track</button>
+  </form>
+  

@@ -1,0 +1,347 @@
+/* Основной стиль */
+:host {
+  display: block;
+  background-color: #121212;
+  color: #FFFFFF;
+  font-family: 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Универсальные кнопки */
+button {
+  background-color: #1DB954;
+  color: #ffffff;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #1ed760;
+  transform: scale(1.05);
+}
+
+/* Поисковая панель */
+.user-search input {
+  background-color: #2a2a2a;
+  border: none;
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.user-search input::placeholder {
+  color: #aaa;
+}
+
+.user-search input:focus {
+  background-color: #333;
+}
+
+.user-search button {
+  margin-top: 0.5rem;
+}
+
+/* Карточка пользователя */
+.user-search .flex {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 1rem;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.user-search .flex:hover {
+  background-color: #333;
+}
+
+.user-search img {
+  border: 3px solid #1DB954;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-search .text-blue-600 {
+  color: #1DB954;
+}
+
+.user-search .text-blue-600:hover {
+  text-decoration: underline;
+}
+
+/* Список треков */
+.track-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* Карточка трека */
+.track-card {
+  background-color: #1e1e1e;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.track-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Фото трека 150x150 */
+.track-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Инфо о треке */
+.track-info {
+  flex: 1;
+}
+
+.track-info h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.track-info p {
+  margin: 0.25rem 0;
+  color: #b3b3b3;
+  font-size: 0.95rem;
+}
+
+/* Аудио */
+audio {
+  margin-top: 0.5rem;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Лайки */
+.likes {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.likes button {
+  background: transparent;
+  color: #1DB954;
+  border: 2px solid #1DB954;
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.likes button:hover {
+  background-color: #1db95433;
+  transform: scale(1.05);
+}
+
+.likes span {
+  color: #fff;
+  font-weight: bold;
+}
+
+
+/* Кнопка воспроизведения */
+.play-button {
+  background-color: #1DB954;
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.play-button:hover {
+  background-color: #1ed760;
+  transform: scale(1.05);
+}
+
+/* Мини плеер */
+.mini-player {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 280px;
+  background-color: #282828;
+  color: white;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.mini-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #1DB954;
+}
+
+.mini-player-header:hover {
+  color: #1ed760;
+}
+
+.mini-player-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.mini-player-image:hover {
+  transform: scale(1.05);
+}
+
+.mini-player audio {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Кастомный плеер */
+.custom-player {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 0.5rem;
+}
+
+.custom-player button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.custom-player button:hover {
+  transform: scale(1.1);
+}
+
+.progress-container {
+  flex: 1;
+  height: 6px;
+  background: #555;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.progress-container:hover {
+  background: #444;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #1DB954;
+  transition: width 0.2s ease;
+}
+
+.time {
+  font-size: 0.9rem;
+  color: #ccc;
+  min-width: 60px;
+  text-align: right;
+}
+.found-users {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.user-card:hover {
+  background-color: #2a2a2a;
+  transform: scale(1.01);
+}
+
+.user-avatar {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #1DB954;
+  margin-right: 1rem;
+}
+
+.user-info {
+  flex: 1;
+  color: #fff;
+}
+
+.user-info p {
+  margin: 0;
+}
+
+.user-info .username {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.user-info .fullname {
+  color: #b3b3b3;
+  font-size: 0.95rem;
+}
+
+.profile-btn {
+  color: #1DB954;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.profile-btn:hover {
+  color: #1ed760;
+  text-decoration: underline;
+}

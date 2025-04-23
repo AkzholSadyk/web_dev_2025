@@ -1,0 +1,88 @@
+
+<button (click)="createTrack()">Create music</button>
+<button (click)="profile()">Profile</button>
+<button (click)="logout()">Logout</button>
+
+<div class="user-search mb-6 flex items-center gap-2 max-w-md">
+  <input [(ngModel)]="searchQuery"
+         placeholder="Search ..."
+         class="flex-1 bg-[#2a2a2a] text-white border-none px-4 py-2 rounded-full text-base focus:outline-none" />
+
+  <button (click)="searchUsers(searchQuery)"
+          class="text-white text-2xl hover:text-green-400">
+    🔍︎
+  </button>
+  
+</div>
+
+<!-- Список найденных пользователей -->
+<div *ngIf="foundUsers.length > 0" class="found-users">
+  <div *ngFor="let user of foundUsers" class="user-card">
+    <img [src]="user.avatar ? 'http://localhost:8000/media/avatars/' + user.avatar : defaultAvatar"
+      alt="Avatar"
+      class="user-avatar" />
+
+
+    <div class="user-info">
+      <p class="username">{{ user.username }}</p>
+      <p class="fullname">{{ user.first_name }} {{ user.last_name }}</p>
+    </div>
+
+    <button (click)="goToUserProfile(user.id)" class="profile-btn">
+      Профиль
+    </button>
+  </div>
+</div>
+
+
+
+<div class="track-list">
+    <div *ngFor="let track of tracks" class="track-card">
+      <img *ngIf="track.image" [src]="track.image" alt="Track Image" class="track-image" />
+      
+      <div class="track-info">
+        <h3>{{ track.title }}</h3>
+        <p>🎤 {{ track.artist }}</p>
+        <p>💿 {{ track.album }}</p>
+        <p>🕒 {{ track.created_at | date:'medium' }}</p>
+
+        <button class="play-button" (click)="openPlayer(track)">▶︎</button>
+  
+        <!-- <audio *ngIf="track.audio" controls>
+          <source [src]="track.audio" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio> -->
+  
+        <div class="likes">
+          <button (click)="likeTrack(track.id)">❤ Like</button>
+          <span>{{ track.like_count || 0 }}</span>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div *ngIf="selectedTrack" class="mini-player">
+  <div class="mini-player-header">
+    <span>{{ selectedTrack.title }}</span>
+    <button (click)="closePlayer()">✖</button>
+  </div>
+  <img [src]="selectedTrack.image" class="mini-player-image" alt="Track Image" />
+  <p><strong>🎤</strong> {{ selectedTrack.artist }}</p>
+  <p><strong>💿</strong> {{ selectedTrack.album }}</p>
+  <audio #audioRef [src]="selectedTrack.audio" (timeupdate)="updateProgress(audioRef)" (loadedmetadata)="initDuration(audioRef)"></audio>
+
+<!-- Кастомный плеер -->
+<div class="custom-player">
+  <button (click)="togglePlay(audioRef)">
+    {{ isPlaying ? '▐▐' : '▶𝄞' }}
+  </button>
+
+  <div class="progress-container" (click)="seek($event, audioRef)">
+    <div class="progress-bar" [style.width.%]="progress"></div>
+  </div>
+
+  <span class="time">{{ currentTime }} / {{ duration }}</span>
+</div>
+
+</div>
+  

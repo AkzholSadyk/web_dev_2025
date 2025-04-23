@@ -1,0 +1,101 @@
+<div class="max-w-4xl mx-auto p-6">
+  <!-- Аватар и профиль -->
+  <div class="flex items-center space-x-6 mb-8">
+    <!-- Левая часть: аватар -->
+    <div class="avatar-wrapper relative group w-[200px] h-[200px]">
+      <img 
+        [src]="profile?.avatar || defaultAvatar"
+        alt="Avatar"
+        class="avatar-img"
+      />
+      
+      <div class="avatar-overlay group-hover:flex" (click)="triggerFileInput()">
+        <span>Изменить фото</span>
+      </div>
+      
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" #fileInput hidden />
+    
+      <!-- Добавим имя пользователя под оверлеем -->
+      <h2 class="username-overlay">{{ username }}</h2>
+    </div>
+    
+  
+    <!-- Правая часть: имя пользователя и кнопки -->
+    <div class="flex flex-col space-y-2">
+      <!-- Имя справа от картинки -->
+      <h2 class="text-2xl font-semibold text-white">{{ username }}</h2>
+  
+      <button (click)="uploadAvatar()" [disabled]="!selectedFile"
+              class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+        Загрузить аватар
+      </button>
+  
+      <button (click)="removeAvatar()"
+              class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+        Удалить аватар
+      </button>
+    </div>
+  </div>
+  
+
+  <!-- Лайкнутые треки -->
+  <h3 class="text-xl font-bold mt-6 mb-4">❤️ Лайкнутые треки</h3>
+
+  <div *ngIf="likedTracks.length === 0" class="text-gray-500">
+    Вы пока не лайкали треки.
+  </div>
+
+  <div class="track-list" *ngIf="likedTracks.length > 0">
+    <div *ngFor="let track of likedTracks" class="track-card">
+      <img *ngIf="track.image" [src]="track.image" alt="Track Image" class="track-image" />
+
+      <div class="track-info">
+        <h3>{{ track.title }}</h3>
+        <p *ngIf="track.artist">🎤 {{ track.artist }}</p>
+        <p *ngIf="track.album">💿 {{ track.album }}</p>
+        <p *ngIf="track.created_at">🕒 {{ track.created_at | date:'medium' }}</p>
+
+        <audio *ngIf="track.audio" controls class="w-full mt-2">
+          <source [src]="track.audio" type="audio/mpeg" />
+          Ваш браузер не поддерживает воспроизведение аудио.
+        </audio>
+
+        <div class="likes mt-2 flex items-center gap-2">
+          <!-- Кнопка дизлайка -->
+          <button (click)="unlikeTrack(track.id)" class="text-red-500 hover:underline">💔 Удалить из лайкнутых</button>
+          <span class="text-gray-600">{{ track.like_count || 0 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Секция для отображения созданных треков -->
+  <h3 class="text-xl font-bold mt-6 mb-4">🎶 Мои треки</h3>
+
+  <div *ngIf="createdTracks.length === 0" class="text-white">
+    У вас нет созданных треков.
+  </div>
+
+  <div class="track-list" *ngIf="createdTracks.length > 0">
+    <div *ngFor="let track of createdTracks" class="track-card">
+      <img *ngIf="track.image" [src]="track.image" alt="Track Image" class="track-image" />
+      
+      <div class="track-info">
+        <h3>{{ track.title }}</h3>
+        <p *ngIf="track.artist">🎤 {{ track.artist }}</p>
+        <p *ngIf="track.album">💿 {{ track.album }}</p>
+        <p *ngIf="track.created_at">🕒 {{ track.created_at | date:'medium' }}</p>
+
+        <audio *ngIf="track.audio" controls class="w-full mt-2">
+          <source [src]="track.audio" type="audio/mpeg" />
+          Ваш браузер не поддерживает воспроизведение аудио.
+        </audio>
+
+        <!-- Кнопка удаления трека -->
+        <button (click)="deleteTrack(track.id)" class="text-red-500 hover:underline">
+          ❌ Удалить
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

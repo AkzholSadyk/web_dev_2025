@@ -1,0 +1,209 @@
+:host {
+    display: block;
+    background-color: #121212;
+}
+
+.text-white {
+    color: white;
+  }
+
+
+body {
+    background-color: #2a2a2a;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .max-w-4xl {
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .p-6 {
+    padding: 1.5rem;
+  }
+  
+  /* Заголовки */
+  h2, h3 {
+    color: #fff;
+  }
+  
+  /* ===================== */
+  /*      АВАТАР           */
+  /* ===================== */
+  img[alt="Avatar"] {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 9999px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* ===================== */
+  /*     КНОПКИ            */
+  /* ===================== */
+  button {
+    padding: 0.5rem 1.2rem;
+    border-radius: 9999px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  button.bg-blue-500 {
+    background-color: #1db954;
+    color: white;
+  }
+  
+  button.bg-blue-500:hover {
+    background-color: #1ed760;
+  }
+  
+  button.bg-red-500 {
+    background-color: #e22134;
+  }
+  
+  button.bg-red-500:hover {
+    background-color: #ff4c4c;
+  }
+  
+  button.bg-gray-500 {
+    background-color: #444;
+  }
+  
+  button.bg-gray-500:hover {
+    background-color: #666;
+  }
+  
+  /* ===================== */
+  /*     ТРЕКИ             */
+  /* ===================== */
+  .track-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .track-card {
+    background-color: #181818;
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+  }
+  
+  .track-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .track-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  
+  .track-info h3 {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .track-info p {
+    color: #bbb;
+    font-size: 0.9rem;
+  }
+  
+  /* ===================== */
+  /*     КАСТОМ ПЛЕЕР      */
+  /* ===================== */
+  audio {
+    width: 100%;
+    margin-top: 0.8rem;
+    border-radius: 12px;
+    background-color: #282828;
+    outline: none;
+  }
+  
+  /* Можно позже заменить на полностью кастомный HTML/JS плеер */
+  audio::-webkit-media-controls-panel {
+    background-color: #1db954;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .likes button {
+    color: #1db954;
+    background: none;
+    border: none;
+  }
+  
+  .likes button:hover {
+    text-decoration: underline;
+    color: #1ed760;
+  }
+  
+  .likes span {
+    color: #888;
+    font-size: 0.85rem;
+  }
+  
+
+  .avatar-wrapper {
+    position: relative;
+    border-radius: 9999px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    cursor: pointer;
+  }
+  
+  .avatar-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .avatar-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    transition: 0.3s;
+    z-index: 10;
+  }
+  
+  .group:hover .avatar-overlay {
+    display: flex;
+  }
+  
+
+  .username-overlay {
+    position: absolute;
+    bottom: -70px; /* немного ниже аватарки */
+    left: 30%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 100px; 
+    text-align: center;
+    width: 100%;
+  }
+  
+
+  /* Миниатюры треков — уменьшенные */
+  .track-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  
